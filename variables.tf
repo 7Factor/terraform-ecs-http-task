@@ -49,6 +49,10 @@ variable "memory" {
   description = "The amount (in MiB) of memory used by the task."
 }
 
+variable "container_definitions" {
+  description = "A container definitions template file"
+}
+
 // ecs service config
 variable "desired_task_count" {
   default     = 2

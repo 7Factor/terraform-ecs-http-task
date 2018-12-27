@@ -9,20 +9,7 @@ resource "aws_ecs_task_definition" "main_task" {
   cpu                      = "${var.cpu}"
   memory                   = "${var.memory}"
 
-  container_definitions = <<DEFINITION
-[
-  {
-    "image": "${var.ecr_uri}:${var.ecr_tag}",
-    "name": "${var.app_name}-container",
-    "portMappings": [
-      {
-        "containerPort": ${var.app_port},
-        "hostPort": 0
-      }
-    ]
-  }
-]
-DEFINITION
+  container_definitions = "${var.container_definitions}"
 }
 
 resource "aws_ecs_service" "main_service" {
