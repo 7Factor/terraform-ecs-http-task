@@ -45,7 +45,7 @@ variable "cpu" {
 }
 
 variable "memory" {
-  default     = 512
+  default     = 256
   description = "The amount (in MiB) of memory used by the task."
 }
 
@@ -53,7 +53,6 @@ variable "container_definitions" {
   description = "A container definitions template file"
 }
 
-// ecs service config
 variable "desired_task_count" {
   default     = 2
   description = "The desired number of tasks for the service to keep running. Defaults to two."
@@ -61,11 +60,6 @@ variable "desired_task_count" {
 
 variable "service_role_arn" {
   description = "The arn of the role to associate with your ecs service."
-}
-
-// tags
-variable "env" {
-  description = "Tags relevant resources with your env. You should set this to 'stage' or 'prod'."
 }
 
 variable "service_name" {

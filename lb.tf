@@ -1,5 +1,5 @@
 resource "aws_lb" "main_load_balancer" {
-  name               = "${var.app_name}-lb-${var.env}"
+  name               = "${var.app_name}-lb"
   load_balancer_type = "application"
   subnets            = ["${var.alb_subnets}"]
   security_groups    = ["${var.lb_security_group_id}"]
@@ -7,7 +7,6 @@ resource "aws_lb" "main_load_balancer" {
   tags {
     Name    = "${var.app_name} LB"
     Service = "${var.service_name}"
-    Env     = "${var.env}"
   }
 }
 
@@ -23,7 +22,7 @@ resource "aws_lb_listener" "main_alb_listener" {
 }
 
 resource "aws_lb_target_group" "main_target_group" {
-  name                 = "${var.app_name}-tg-${var.env}"
+  name                 = "${var.app_name}-tg"
   port                 = "${var.alb_port}"
   protocol             = "HTTP"
   vpc_id               = "${var.vpc_id}"
