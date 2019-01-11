@@ -22,14 +22,6 @@ variable "app_name" {
   description = "The name of your app"
 }
 
-variable "ecr_uri" {
-  description = "The uri of the ecr image you want to pass."
-}
-
-variable "ecr_tag" {
-  description = "The tag of the ecr image. We use semantic versioning."
-}
-
 variable "alb_port" {
   default     = 80
   description = "The port you want to open on the ALB. Defaults to 80."
