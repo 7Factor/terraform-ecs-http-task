@@ -1,3 +1,3 @@
 output "lb_hostname" {
-  value = "${aws_lb.main_load_balancer.dns_name}"
+  value = "${aws_lb.app_lb.dns_name}"
 }

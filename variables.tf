@@ -1,30 +1,35 @@
-// networking config
-variable "region" {
-  default     = "us-east-1"
-  description = "The region of your infrastructure. Defaults to us-east-1."
-}
-
+// Globals
 variable "vpc_id" {
   description = "The id of your vpc."
 }
 
-variable "alb_subnets" {
+variable "cluster_id" {
+  description = "The cluster id we're deploying to."
+}
+
+// Load balancer configuration
+variable "lb_subnets" {
   type        = "list"
   description = "The list of subnet IDs to attach to the LB."
 }
 
-variable "lb_security_group_id" {
-  description = "The id of the sg to associate with you lb."
+variable "lb_security_policy" {
+  default     = "ELBSecurityPolicy-FS-2018-06"
+  description = "Security policy for the load balancer. Defaults to something interesting."
 }
 
-// ecs task config
+variable "lb_cert_arn" {
+  description = "Certificate ARN for securing HTTPS on our load balancer."
+}
+
+variable "lb_ingress_cidr" {
+  default     = "0.0.0.0/0"
+  description = "CIDR to allow access to this load balancer. Allows white listing of IPs if you need that kind of thing, otherwise it just defaults to erebody."
+}
+
+// Task configuration
 variable "app_name" {
-  description = "The name of your app"
-}
-
-variable "alb_port" {
-  default     = 80
-  description = "The port you want to open on the ALB. Defaults to 80."
+  description = "The name of your app."
 }
 
 variable "app_port" {
@@ -41,8 +46,8 @@ variable "memory" {
   description = "The amount (in MiB) of memory used by the task."
 }
 
-variable "container_definitions" {
-  description = "A container definitions template file"
+variable "container_definition" {
+  description = "A container definitions JSON file."
 }
 
 variable "desired_task_count" {
@@ -54,6 +59,7 @@ variable "service_role_arn" {
   description = "The arn of the role to associate with your ecs service."
 }
 
-variable "service_name" {
-  description = "Will apply your service name to tags on relevant resources."
+variable "launch_type" {
+  default     = "EC2"
+  description = "The launch type for the task. We assume EC2 by default."
 }
