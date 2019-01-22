@@ -8,9 +8,9 @@ variable "cluster_name" {
 }
 
 // Load balancer configuration
-variable "lb_subnets" {
+variable "lb_public_subnets" {
   type        = "list"
-  description = "The list of subnet IDs to attach to the LB."
+  description = "The list of subnet IDs to attach to the LB. Should be public."
 }
 
 variable "lb_security_policy" {
