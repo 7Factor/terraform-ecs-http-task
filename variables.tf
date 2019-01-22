@@ -3,8 +3,8 @@ variable "vpc_id" {
   description = "The id of your vpc."
 }
 
-variable "cluster_id" {
-  description = "The cluster id we're deploying to."
+variable "cluster_name" {
+  description = "The name of the cluster that we're deploying to."
 }
 
 // Load balancer configuration
