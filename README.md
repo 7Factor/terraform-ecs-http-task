@@ -1,8 +1,8 @@
-# ECS Web API Task via Terraform
+# ECS HTTP Task
 
 This module will allow you to deploy an ECS Task and an ECS Service. This is intended to be run as part of your app deployment
 pipeline. It works well with [Concourse.](https://concourse-ci.org) It is assumed you already have a solution for deploying an 
-ECS Cluster. If not, check out [ours.](https://github.com/7Factor/terraform-ecs-cluster)
+ECS Cluster. If not, check out [ours.](https://github.com/7Factor/terraform-ecs-cluster) This particular iteration assumes that you are deploying applications behind a load balancer with SSL termination and redirection from port 80 (i.e. AWS application load balancer). 
 
 ## Prerequisites
 

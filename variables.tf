@@ -19,7 +19,7 @@ variable "lb_security_policy" {
 }
 
 variable "lb_cert_arn" {
-  description = "Certificate ARN for securing HTTPS on our load balancer."
+  description = "Certificate ARN for securing HTTPS on our load balancer. We will automagically set up a redirect from 80."
 }
 
 variable "lb_ingress_cidr" {
@@ -29,7 +29,7 @@ variable "lb_ingress_cidr" {
 
 // Task configuration
 variable "app_name" {
-  description = "The name of your app."
+  description = "The name of your app. This is used in the task configuration."
 }
 
 variable "app_port" {

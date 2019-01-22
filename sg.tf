@@ -1,3 +1,7 @@
+# We assume only 443 and 80 on an application load balancer.
+# Instead of allowing users to pass one in we just make it for
+# them here since this is an HTTP task module. More interesting
+# configurations should be custom built.
 resource "aws_security_group" "httplb_sg" {
   name   = "${var.app_name}-lb-sg"
   vpc_id = "${var.vpc_id}"
