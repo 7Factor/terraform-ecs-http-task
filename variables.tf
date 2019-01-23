@@ -27,6 +27,10 @@ variable "lb_ingress_cidr" {
   description = "CIDR to allow access to this load balancer. Allows white listing of IPs if you need that kind of thing, otherwise it just defaults to erebody."
 }
 
+variable "cluster_lb_sg_id" {
+  description = "The id of the ECS cluster load balancer security group."
+}
+
 // Task configuration
 variable "app_name" {
   description = "The name of your app. This is used in the task configuration."
