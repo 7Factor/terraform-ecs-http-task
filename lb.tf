@@ -5,7 +5,7 @@ resource "aws_lb" "app_lb" {
   security_groups    = ["${var.cluster_lb_sg_id}"]
 
   tags {
-    Name = "Application LB (${var.app_name})"
+    Name = "Application LB ${var.app_name}"
   }
 }
 
