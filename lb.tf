@@ -39,7 +39,7 @@ resource "aws_lb_listener" "redirect_listener" {
 }
 
 resource "aws_lb_target_group" "lb_targets" {
-  name                 = "${var.app_name}-tg"
+  name                 = "${substr("tg-${var.cluster_name}-${var.app_name}", 0, min(length("lb-${var.cluster_name}-${var.app_name}"), 32))}"
   port                 = 80
   protocol             = "HTTP"
   vpc_id               = "${var.vpc_id}"
