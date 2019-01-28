@@ -7,6 +7,12 @@ resource "aws_lb" "app_lb" {
   tags {
     Name = "Application LB ${var.app_name}"
   }
+
+  # sometimes updating an lb will cause a destroy then create operation, rather than update in place, we want to prevent
+  # this so we don't cause an outage. defaults to true, pass false to turn it off.
+  lifecycle {
+    prevent_destroy = "${var.prevent_destroy_lb}"
+  }
 }
 
 resource "aws_lb_listener" "secure_listener" {
