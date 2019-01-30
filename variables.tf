@@ -31,11 +31,6 @@ variable "cluster_lb_sg_id" {
   description = "The id of the ECS cluster load balancer security group."
 }
 
-variable "prevent_destroy_lb" {
-  default     = true
-  description = "Bool value to configure destroy protection on the load balancer. Defaults to true."
-}
-
 // Health check (defaults to something sane)
 variable "health_check_interval" {
   default     = 30
