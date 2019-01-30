@@ -7,10 +7,6 @@ resource "aws_lb" "app_lb" {
   tags {
     Name = "Application LB ${var.app_name}"
   }
-
-  lifecycle {
-    prevent_destroy = true
-  }
 }
 
 resource "aws_lb_listener" "secure_listener" {
