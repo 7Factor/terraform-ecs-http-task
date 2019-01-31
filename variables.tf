@@ -96,8 +96,8 @@ variable "container_definition" {
 }
 
 variable "desired_task_count" {
-  default     = 2
-  description = "The desired number of tasks for the service to keep running. Defaults to two."
+  default     = 1
+  description = "The desired number of tasks for the service to keep running. Defaults to one."
 }
 
 variable "service_role_arn" {
