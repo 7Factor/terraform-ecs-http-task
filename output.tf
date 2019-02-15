@@ -3,7 +3,7 @@ output "lb_hostname" {
 }
 
 output "health_check_path" {
-  value = "${aws_lb_target_group.lb_targets.health_check.path}"
+  value = "${var.health_check_path}"
 }
 
 output "lb_zone_id" {
