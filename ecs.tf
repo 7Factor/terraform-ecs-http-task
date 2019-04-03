@@ -18,6 +18,7 @@ resource "aws_ecs_service" "main_service" {
   desired_count   = "${var.desired_task_count}"
   iam_role        = "${var.service_role_arn}"
   launch_type     = "${var.launch_type}"
+  volume          = "${var.volumes}"
 
   load_balancer {
     container_name   = "${var.app_name}-cnt"

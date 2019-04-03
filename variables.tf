@@ -108,3 +108,9 @@ variable "launch_type" {
   default     = "EC2"
   description = "The launch type for the task. We assume EC2 by default."
 }
+
+variable "volumes" {
+  type        = "list"
+  default     = []
+  description = "A list of volumes to attach to the ECS task. Defaults to an empty list."
+}
