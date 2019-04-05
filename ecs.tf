@@ -21,7 +21,7 @@ resource "aws_ecs_service" "main_service" {
   launch_type     = "${var.launch_type}"
 
   load_balancer {
-    container_name   = "${var.app_name}-cnt"
+    container_name   = "${var.app_name}"
     container_port   = "${var.app_port}"
     target_group_arn = "${aws_lb_target_group.lb_targets.arn}"
   }
