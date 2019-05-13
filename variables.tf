@@ -104,6 +104,11 @@ variable "service_role_arn" {
   description = "The arn of the role to associate with your ecs service."
 }
 
+variable "service_deployment_maximum_percent" {
+  default     = "200"
+  description = "The upper limit (as a percentage of the service's desiredCount) of the number of running tasks that can be running in a service during a deployment. Defaults to 200 percent, which should be used in 99% of cases to allow for proper green/blue."
+}
+
 variable "launch_type" {
   default     = "EC2"
   description = "The launch type for the task. We assume EC2 by default."
