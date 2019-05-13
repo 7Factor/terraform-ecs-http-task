@@ -13,15 +13,13 @@ resource "aws_ecs_task_definition" "main_task" {
 }
 
 resource "aws_ecs_service" "main_service" {
-  name            = "${var.app_name}-svc"
-  task_definition = "${aws_ecs_task_definition.main_task.arn}"
-  cluster         = "${data.aws_ecs_cluster.target_cluster.id}"
-  desired_count   = "${var.desired_task_count}"
-  iam_role        = "${var.service_role_arn}"
-  launch_type     = "${var.launch_type}"
-
-  # allows ECS to properly blue/green
-  deployment_maximum_percent = "200"
+  name                       = "${var.app_name}-svc"
+  task_definition            = "${aws_ecs_task_definition.main_task.arn}"
+  cluster                    = "${data.aws_ecs_cluster.target_cluster.id}"
+  desired_count              = "${var.desired_task_count}"
+  iam_role                   = "${var.service_role_arn}"
+  launch_type                = "${var.launch_type}"
+  deployment_maximum_percent = "${var.service_deployment_maximum_percent}"
 
   load_balancer {
     container_name   = "${var.app_name}"
