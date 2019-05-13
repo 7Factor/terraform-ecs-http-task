@@ -46,6 +46,9 @@ resource "aws_lb_target_group" "lb_targets" {
   target_type          = "instance"
   deregistration_delay = "60"
 
+  # allows ECS to properly blue/green
+  deployment_maximum_percent = "200"
+
   health_check {
     interval            = "${var.health_check_interval}"
     path                = "${var.health_check_path}"
