@@ -20,6 +20,9 @@ resource "aws_ecs_service" "main_service" {
   iam_role        = "${var.service_role_arn}"
   launch_type     = "${var.launch_type}"
 
+  # allows ECS to properly blue/green
+  deployment_maximum_percent = "200"
+
   load_balancer {
     container_name   = "${var.app_name}"
     container_port   = "${var.app_port}"
