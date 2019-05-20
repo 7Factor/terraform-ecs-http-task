@@ -119,3 +119,8 @@ variable "volumes" {
   default     = []
   description = "A list of volumes to attach to the ECS task. Defaults to an empty list."
 }
+
+variable "task_role_arn" {
+  default     = ""
+  description = "The arn of the iam role you wish to pass to the ecs task containers."
+}
