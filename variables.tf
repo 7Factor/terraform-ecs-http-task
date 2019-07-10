@@ -114,10 +114,9 @@ variable "launch_type" {
   description = "The launch type for the task. We assume EC2 by default."
 }
 
-variable "volumes" {
-  type        = "list"
-  default     = []
-  description = "A list of volumes to attach to the ECS task. Defaults to an empty list."
+variable "volume" {
+  default     = ""
+  description = "A volume to attach to the ECS task. Terraform had to change their API because of AWS nonsense and now you can only mount one volume at a time. Defaults to an empty string"
 }
 
 variable "task_role_arn" {
