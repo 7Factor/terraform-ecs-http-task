@@ -1,10 +1,10 @@
 resource "aws_lb" "app_lb" {
   name               = "${substr("lb-${var.cluster_name}-${var.app_name}", 0, min(length("lb-${var.cluster_name}-${var.app_name}"), 32))}"
   load_balancer_type = "application"
-  subnets            = ["${var.lb_public_subnets}"]
   security_groups    = ["${var.cluster_lb_sg_id}"]
+  subnets            = flatten(["${var.lb_public_subnets}"])
 
-  tags {
+  tags = {
     Name = "Application LB ${var.app_name}"
   }
 }
