@@ -114,11 +114,6 @@ variable "launch_type" {
   description = "The launch type for the task. We assume EC2 by default."
 }
 
-variable "volume_name" {
-  default     = "image-storage"
-  description = "A volume to attach to the ECS task. Terraform had to change their API because of AWS nonsense and now you can only mount one volume at a time. Defaults to a dummy name because AWS doesn't allow an empty volume name. This is an annoying work around."
-}
-
 variable "task_role_arn" {
   default     = ""
   description = "The arn of the iam role you wish to pass to the ecs task containers."
