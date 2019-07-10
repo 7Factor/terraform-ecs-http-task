@@ -10,7 +10,7 @@ resource "aws_ecs_task_definition" "main_task" {
   memory                   = "${var.memory}"
   container_definitions    = "${var.container_definition}"
 
-  task_role_arn            = "${var.task_role_arn}"
+  task_role_arn = "${var.task_role_arn}"
 
   volume {
     name = "${var.volume}"
