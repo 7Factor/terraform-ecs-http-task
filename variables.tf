@@ -114,15 +114,12 @@ variable "launch_type" {
   description = "The launch type for the task. We assume EC2 by default."
 }
 
-variable "volume_name" {
-  default     = "image-storage"
-  description = "A volume to attach to the ECS task. Terraform had to change their API because of AWS nonsense and now you can only mount one volume at a time. Defaults to a dummy name because AWS doesn't allow an empty volume name. This is an annoying work around."
+variable "volume_blocks" {
+  type        = list(any)
+  default     = [{ volume_name = "dev-null", volume_host_path = "/dev/null" }]
+  description = "A list of definitions to attach volumes to the ECS task. Amazon does not allow empty volume names once declared, so defaulting to a dummy name if this var is left unused."
 }
 
-variable "volume_host_path" {
-  default     = ""
-  description = "A volume to attach to the ECS task. Terraform had to change their API because of AWS nonsense and now you can only mount one volume at a time. Defaults to a dummy name because AWS doesn't allow an empty volume name. This is an annoying work around."
-}
 
 variable "task_role_arn" {
   default     = ""
