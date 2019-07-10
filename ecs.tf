@@ -11,11 +11,6 @@ resource "aws_ecs_task_definition" "main_task" {
   container_definitions    = var.container_definition
 
   task_role_arn = var.task_role_arn
-
-  volume {
-    name = var.volume_name
-  }
-
 }
 
 resource "aws_ecs_service" "main_service" {
