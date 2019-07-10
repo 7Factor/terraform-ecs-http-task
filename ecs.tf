@@ -13,7 +13,7 @@ resource "aws_ecs_task_definition" "main_task" {
   task_role_arn = var.task_role_arn
 
   volume {
-    name = "image-storage"
+    name = var.volume
   }
 
 }
