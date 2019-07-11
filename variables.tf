@@ -114,7 +114,7 @@ variable "launch_type" {
   description = "The launch type for the task. We assume EC2 by default."
 }
 
-variable "volume_blocks" {
+variable "volumes" {
   type        = list(any)
   default     = [{ volume_name = "dev-null", volume_host_path = "/dev/null" }]
   description = "A list of definitions to attach volumes to the ECS task. Amazon does not allow empty volume names once declared, so defaulting to a dummy name if this var is left unused."
