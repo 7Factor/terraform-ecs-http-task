@@ -31,6 +31,11 @@ variable "cluster_lb_sg_id" {
   description = "The id of the ECS cluster load balancer security group."
 }
 
+variable "is_lb_internal" {
+  default     = "false"
+  description = "Switch for setting your LB to be internal. Defaults to false."
+}
+
 // Health check (defaults to something sane)
 variable "health_check_interval" {
   default     = 30
