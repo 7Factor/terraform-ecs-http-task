@@ -4,7 +4,7 @@ data "aws_ecs_cluster" "target_cluster" {
 
 resource "aws_ecs_task_definition" "main_task" {
   family                   = "${var.app_name}-tsk"
-  requires_compatibilities = ["EC2"]
+  requires_compatibilities = [var.launch_type]
   network_mode             = "bridge"
   cpu                      = var.cpu
   memory                   = var.memory
