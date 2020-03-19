@@ -9,7 +9,7 @@ variable "cluster_name" {
 
 // Load balancer configuration
 variable "lb_public_subnets" {
-  type        = "list"
+  type        = list
   description = "The list of subnet IDs to attach to the LB. Should be public."
 }
 
@@ -35,6 +35,17 @@ variable "is_lb_internal" {
   default     = "false"
   description = "Switch for setting your LB to be internal. Defaults to false."
 }
+
+variable "alb_access_logs_bucket" {
+  default = ""
+  description = "The bucket to log alb access logs to."
+}
+
+variable "alb_access_logs_enabled" {
+  default = "false"
+  description = "Flag for controlling alb access logs."
+}
+
 
 // Health check (defaults to something sane)
 variable "health_check_interval" {
@@ -124,7 +135,6 @@ variable "volumes" {
   default     = [{ name = "dev-null", host_path = "/dev/null" }]
   description = "A list of definitions to attach volumes to the ECS task. Amazon does not allow empty volume names once declared, so defaulting to a dummy name if this var is left unused."
 }
-
 
 variable "task_role_arn" {
   default     = ""
