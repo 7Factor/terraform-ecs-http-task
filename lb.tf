@@ -5,6 +5,12 @@ resource "aws_lb" "app_lb" {
   subnets            = flatten([var.lb_public_subnets])
   internal           = var.is_lb_internal
 
+  access_logs {
+    bucket  = var.alb_access_logs_bucket
+    prefix  = "${var.app_name}-logs"
+    enabled = var.alb_access_logs_enabled
+  }
+
   tags = {
     Name = "Application LB ${var.app_name}"
   }
