@@ -36,16 +36,20 @@ variable "is_lb_internal" {
   description = "Switch for setting your LB to be internal. Defaults to false."
 }
 
+variable "secure_redirect_enabled" {
+  default     = "true"
+  description = "Switch the secure redict from 80 to 443 on or off. On by default because this is a good idea, but you can turn it off if you have a weird edge case."
+}
+
 variable "alb_access_logs_bucket" {
-  default = ""
+  default     = ""
   description = "The bucket to log alb access logs to."
 }
 
 variable "alb_access_logs_enabled" {
-  default = "false"
+  default     = "false"
   description = "Flag for controlling alb access logs."
 }
-
 
 // Health check (defaults to something sane)
 variable "health_check_interval" {
