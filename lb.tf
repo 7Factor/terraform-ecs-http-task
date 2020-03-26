@@ -30,6 +30,8 @@ resource "aws_lb_listener" "secure_listener" {
 }
 
 resource "aws_lb_listener" "redirect_listener" {
+  count = var.secure_redirect_enabled ? 1 : 0
+
   load_balancer_arn = aws_lb.app_lb.arn
   port              = "80"
   protocol          = "HTTP"
@@ -42,6 +44,20 @@ resource "aws_lb_listener" "redirect_listener" {
       protocol    = "HTTPS"
       status_code = "HTTP_301"
     }
+  }
+}
+
+# typically not used unless you have a client that can't follow redirects for some reason
+resource "aws_lb_listener" "insecure_listener" {
+  count = var.secure_redirect_enabled ? 0 : 1
+
+  load_balancer_arn = aws_lb.app_lb.arn
+  port              = "80"
+  protocol          = "HTTP"
+
+  default_action {
+    target_group_arn = aws_lb_target_group.lb_targets.arn
+    type             = "forward"
   }
 }
 
