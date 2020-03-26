@@ -36,7 +36,7 @@ variable "is_lb_internal" {
   description = "Switch for setting your LB to be internal. Defaults to false."
 }
 
-variable "secure_redirect_enabled" {
+variable "secure_listener_enabled" {
   default     = "true"
   description = "Switch the secure redict from 80 to 443 on or off. On by default because this is a good idea, but you can turn it off if you have a weird edge case."
 }

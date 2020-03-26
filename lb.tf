@@ -49,7 +49,7 @@ resource "aws_lb_listener" "redirect_listener" {
 
 # typically not used unless you have a client that can't follow redirects for some reason
 resource "aws_lb_listener" "insecure_listener" {
-  count = var.secure_redirect_enabled ? 0 : 1
+  count = var.secure_listener_enabled ? 0 : 1
 
   load_balancer_arn = aws_lb.app_lb.arn
   port              = "80"
