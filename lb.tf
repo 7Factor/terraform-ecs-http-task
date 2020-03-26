@@ -30,7 +30,7 @@ resource "aws_lb_listener" "secure_listener" {
 }
 
 resource "aws_lb_listener" "redirect_listener" {
-  count = var.secure_redirect_enabled ? 1 : 0
+  count = var.secure_listener_enabled ? 1 : 0
 
   load_balancer_arn = aws_lb.app_lb.arn
   port              = "80"
