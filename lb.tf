@@ -1,4 +1,6 @@
 resource "aws_lb" "app_lb" {
+  count = var.enable_loadbalancer ? 1 : 0
+
   name               = substr("lb-${var.cluster_name}-${var.app_name}", 0, min(length("lb-${var.cluster_name}-${var.app_name}"), 32))
   load_balancer_type = "application"
   security_groups    = [var.cluster_lb_sg_id]
@@ -17,6 +19,8 @@ resource "aws_lb" "app_lb" {
 }
 
 resource "aws_lb_listener" "secure_listener" {
+  count = var.enable_loadbalancer ? 1 : 0
+
   load_balancer_arn = aws_lb.app_lb.arn
   port              = "443"
   protocol          = "HTTPS"
@@ -30,7 +34,7 @@ resource "aws_lb_listener" "secure_listener" {
 }
 
 resource "aws_lb_listener" "redirect_listener" {
-  count = var.secure_listener_enabled ? 1 : 0
+  count = var.secure_listener_enabled && var.enable_loadbalancer ? 1 : 0
 
   load_balancer_arn = aws_lb.app_lb.arn
   port              = "80"
@@ -49,7 +53,7 @@ resource "aws_lb_listener" "redirect_listener" {
 
 # typically not used unless you have a client that can't follow redirects for some reason
 resource "aws_lb_listener" "insecure_listener" {
-  count = var.secure_listener_enabled ? 0 : 1
+  count = var.secure_listener_enabled && var.enable_loadbalancer ? 0 : 1
 
   load_balancer_arn = aws_lb.app_lb.arn
   port              = "80"
@@ -62,6 +66,8 @@ resource "aws_lb_listener" "insecure_listener" {
 }
 
 resource "aws_lb_target_group" "lb_targets" {
+  count = var.enable_loadbalancer ? 1 : 0
+
   name                 = substr("tg-${var.cluster_name}-${var.app_name}", 0, min(length("lb-${var.cluster_name}-${var.app_name}"), 32))
   port                 = 80
   protocol             = "HTTP"

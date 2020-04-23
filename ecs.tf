@@ -34,11 +34,13 @@ resource "aws_ecs_service" "main_service" {
   launch_type                = var.launch_type
   deployment_maximum_percent = var.service_deployment_maximum_percent
 
-  load_balancer {
-    container_name   = var.app_name
-    container_port   = var.app_port
-    target_group_arn = aws_lb_target_group.lb_targets.arn
-  }
+  dynamic "load_balancer" {
+    for_each = aws_lb.app_lb == null ? [] : list(1)
 
-  depends_on = [aws_lb.app_lb]
+    content {
+      container_name   = var.app_name
+      container_port   = var.app_port
+      target_group_arn = aws_lb_target_group.lb_targets.arn
+    }
+  }
 }
