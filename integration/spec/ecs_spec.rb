@@ -15,7 +15,6 @@ describe ecs_service("#{TFVARS['app_name']}-svc"), cluster: TFVARS['cluster_name
   end
 
   its(:desired_count) { should eq TFVARS['desired_task_count']}
-  its(:running_count) { should eq TFVARS['desired_task_count']}
   its(:launch_type) { should eq TFVARS['launch_type']}
   its(:task_definition) { should eq TFOUTPUTS[:task_definition_arn][:value]}
   its(:status) { should eq 'ACTIVE'}
