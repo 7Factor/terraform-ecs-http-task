@@ -46,6 +46,11 @@ variable "alb_access_logs_bucket" {
   description = "The bucket to log alb access logs to."
 }
 
+variable "idle_timeout" {
+  default     = 60
+  description = "The time in seconds that the connection is allowed to be idle. Only valid for Load Balancers of type application. Default: 60."
+}
+
 variable "alb_access_logs_enabled" {
   default     = "false"
   description = "Flag for controlling alb access logs."

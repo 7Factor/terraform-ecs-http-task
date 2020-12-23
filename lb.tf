@@ -4,6 +4,7 @@ resource "aws_lb" "app_lb" {
   security_groups    = [var.cluster_lb_sg_id]
   subnets            = flatten([var.lb_public_subnets])
   internal           = var.is_lb_internal
+  idle_timeout       = var.idle_timeout
 
   access_logs {
     bucket  = var.alb_access_logs_bucket
