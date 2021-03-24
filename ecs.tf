@@ -3,12 +3,11 @@ data "aws_ecs_cluster" "target_cluster" {
 }
 
 resource "aws_ecs_task_definition" "main_task" {
-  family                   = "${var.app_name}-tsk"
-  requires_compatibilities = [var.launch_type]
-  network_mode             = "bridge"
-  cpu                      = var.cpu
-  memory                   = var.memory
-  container_definitions    = var.container_definition
+  family                = "${var.app_name}-tsk"
+  network_mode          = "bridge"
+  cpu                   = var.cpu
+  memory                = var.memory
+  container_definitions = var.container_definition
 
   task_role_arn = var.task_role_arn
 
