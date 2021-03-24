@@ -9,7 +9,7 @@ variable "cluster_name" {
 
 // Load balancer configuration
 variable "lb_public_subnets" {
-  type        = list
+  type        = list(any)
   description = "The list of subnet IDs to attach to the LB. Should be public."
 }
 

@@ -41,4 +41,8 @@ resource "aws_ecs_service" "main_service" {
   }
 
   depends_on = [aws_lb.app_lb]
+
+  lifecycle {
+    ignore_changes = [desired_count]
+  }
 }
