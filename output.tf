@@ -30,3 +30,8 @@ output "task_definition_arn" {
   value       = aws_ecs_task_definition.main_task.arn
   description = "The arn of your task definition"
 }
+
+output "service_name" {
+  value       = aws_ecs_service.main_service.name
+  description = "The name of the service"
+}
