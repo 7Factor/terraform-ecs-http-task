@@ -10,6 +10,10 @@ output "lb_arn" {
   value = aws_lb.app_lb.arn
 }
 
+output "lb_arn_suffix" {
+  value = aws_lb.app_lb.arn_suffix
+}
+
 output "lb_secure_listener" {
   value = aws_lb_listener.secure_listener.arn
 }
