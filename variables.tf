@@ -152,12 +152,14 @@ variable "task_role_arn" {
 
 variable "ordered_placement_strategies" {
   type = list(object({ type = string, field = string }))
-  default = [{
-    type  = "spread"
-    field = "attribute:ecs.availability-zone"
-    }, {
-    type  = "spread"
-    field = "instanceId"
+  default = [
+    {
+      type  = "spread"
+      field = "attribute:ecs.availability-zone"
+    },
+    {
+      type  = "spread"
+      field = "instanceId"
     }
   ]
   description = "The placement strategies used for the ECS service. Defaults to the most highly available `spread` algorithm for backward compatibility. Specify a different strategy such as `binpack` for better cost-efficiency."
