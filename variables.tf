@@ -160,5 +160,5 @@ variable "ordered_placement_strategies" {
     field = "instanceId"
     }
   ]
-  description = "The placement strategies used for the ECS service. Defaults to the most highly avaliable `spread` algorithm for backward compatibility. Specify a different strategy such as `binpack` for better cost-efficiency."
+  description = "The placement strategies used for the ECS service. Defaults to the most highly available `spread` algorithm for backward compatibility. Specify a different strategy such as `binpack` for better cost-efficiency."
 }
