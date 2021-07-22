@@ -149,3 +149,16 @@ variable "task_role_arn" {
   default     = ""
   description = "The arn of the iam role you wish to pass to the ecs task containers."
 }
+
+variable "ordered_placement_strategies" {
+  type = list(object({ type = string, field = string }))
+  default = [{
+    type  = "spread"
+    field = "attribute:ecs.availability-zone"
+    }, {
+    type  = "spread"
+    field = "instanceId"
+    }
+  ]
+  description = "The placement strategies used for the ECS service. Defaults to the most highly avaliable `spread` algorithm for backward compatibility. Specify a different strategy such as `binpack` for better cost-efficiency."
+}

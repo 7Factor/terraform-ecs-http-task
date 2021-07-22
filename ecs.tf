@@ -41,6 +41,14 @@ resource "aws_ecs_service" "main_service" {
 
   depends_on = [aws_lb.app_lb]
 
+  dynamic "ordered_placement_strategy" {
+    for_each = var.ordered_placement_strategies
+    content {
+      type  = ordered_placement_strategy.value.type
+      field = ordered_placement_strategy.value.field
+    }
+  }
+
   lifecycle {
     ignore_changes = [desired_count]
   }
