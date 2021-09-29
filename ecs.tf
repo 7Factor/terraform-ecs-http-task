@@ -51,6 +51,11 @@ resource "aws_ecs_service" "main_service" {
   }
 
   lifecycle {
-    ignore_changes = [desired_count]
+    ignore_changes = [
+      tags,
+      # this is critical to include, to prevent the service from being rebuilt on every deploy
+      # thus causing the service to become unavailable during a deploy
+      capacity_provider_strategy
+    ]
   }
 }
