@@ -31,11 +31,9 @@ output "lb_zone_id" {
 }
 
 output "task_definition_arn" {
-  value       = aws_ecs_task_definition.main_task.arn
-  description = "The arn of your task definition"
+  value = aws_ecs_task_definition.main_task.arn
 }
 
 output "service_name" {
-  value       = aws_ecs_service.main_service.name
-  description = "The name of the service"
+  value = aws_ecs_service.main_service.name
 }
