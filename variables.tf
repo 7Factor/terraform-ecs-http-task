@@ -57,6 +57,11 @@ variable "alb_access_logs_enabled" {
 }
 
 // Health check (defaults to something sane)
+variable "health_check_grace_period" {
+  default     = 45
+  description = "Allows a warm up period for services that have to things like migrations etcetera."
+}
+
 variable "health_check_interval" {
   default     = 30
   description = "The approximate amount of time, in seconds, between health checks of an individual target. Minimum value 5 seconds, Maximum value 300 seconds. Default 30 seconds."
