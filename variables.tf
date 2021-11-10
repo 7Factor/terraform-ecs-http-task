@@ -169,3 +169,13 @@ variable "ordered_placement_strategies" {
   ]
   description = "The placement strategies used for the ECS service. Defaults to the most highly available `spread` algorithm for backward compatibility. Specify a different strategy such as `binpack` for better cost-efficiency."
 }
+
+variable "circuit_breaker_enabled" {
+  default     = false
+  description = "Should we enable deployment circuit breakers? Defaults to false."
+}
+
+variable "circuit_breaker_rollback_enabled" {
+  default     = false
+  description = "Should we enable rollback when a circuit breaker triggers? Defaults to false."
+}
