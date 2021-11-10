@@ -34,6 +34,11 @@ resource "aws_ecs_service" "main_service" {
   deployment_maximum_percent        = var.service_deployment_maximum_percent
   health_check_grace_period_seconds = var.health_check_grace_period
 
+  deployment_circuit_breaker {
+    enable   = var.circuit_breaker_enabled
+    rollback = var.circuit_breaker_rollback_enabled
+  }
+
   load_balancer {
     container_name   = var.app_name
     container_port   = var.app_port
