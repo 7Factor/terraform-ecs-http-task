@@ -64,3 +64,8 @@ resource "aws_ecs_service" "main_service" {
     ]
   }
 }
+
+data "aws_ecs_service" "main_service" {
+  cluster_arn  = data.aws_ecs_cluster.target_cluster.arn
+  service_name = aws_ecs_service.main_service.name
+}

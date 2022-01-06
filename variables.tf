@@ -179,3 +179,14 @@ variable "circuit_breaker_rollback_enabled" {
   default     = false
   description = "Should we enable rollback when a circuit breaker triggers? Defaults to false."
 }
+
+variable "circuit_breaker_failure_events_enabled" {
+  default     = false
+  description = "Should we create EventBridge events for when a failure is detected by the circuit breaker? Defaults to false."
+}
+
+variable "circuit_breaker_sns_topic_arn" {
+  type        = string
+  default     = null
+  description = "The arn of the SNS topic to publish deployment circuit breaker failure messages to. If not provided, a SNS topic will be provided by this module."
+}
