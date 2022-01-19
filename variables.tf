@@ -135,8 +135,13 @@ variable "service_role_arn" {
 }
 
 variable "service_deployment_maximum_percent" {
-  default     = "200"
+  default     = 200
   description = "The upper limit (as a percentage of the service's desiredCount) of the number of running tasks that can be running in a service during a deployment. Defaults to 200 percent, which should be used in 99% of cases to allow for proper green/blue."
+}
+
+variable "service_deployment_minimum_healthy_percent" {
+  default     = 100
+  description = "The lower limit (as a percentage of the service's desiredCount) of the number of running tasks that are required for the service to be considered 'healthy'."
 }
 
 variable "launch_type" {

@@ -25,14 +25,15 @@ resource "aws_ecs_task_definition" "main_task" {
 }
 
 resource "aws_ecs_service" "main_service" {
-  name                              = "${var.app_name}-svc"
-  task_definition                   = aws_ecs_task_definition.main_task.arn
-  cluster                           = data.aws_ecs_cluster.target_cluster.id
-  desired_count                     = var.desired_task_count
-  iam_role                          = var.service_role_arn
-  launch_type                       = var.launch_type
-  deployment_maximum_percent        = var.service_deployment_maximum_percent
-  health_check_grace_period_seconds = var.health_check_grace_period
+  name                               = "${var.app_name}-svc"
+  task_definition                    = aws_ecs_task_definition.main_task.arn
+  cluster                            = data.aws_ecs_cluster.target_cluster.id
+  desired_count                      = var.desired_task_count
+  iam_role                           = var.service_role_arn
+  launch_type                        = var.launch_type
+  deployment_maximum_percent         = var.service_deployment_maximum_percent
+  deployment_minimum_healthy_percent = var.service_deployment_minimum_healthy_percent
+  health_check_grace_period_seconds  = var.health_check_grace_period
 
   deployment_circuit_breaker {
     enable   = var.circuit_breaker_enabled
