@@ -22,6 +22,10 @@ output "lb_target_group_name" {
   value = aws_lb_target_group.lb_targets.name
 }
 
+output "lb_target_group_arn_suffix" {
+  value = aws_lb_target_group.lb_targets.arn_suffix
+}
+
 output "health_check_path" {
   value = var.health_check_path
 }
