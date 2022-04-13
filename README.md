@@ -1,3 +1,9 @@
+# Deprecated
+
+This version of the module has been deprecated in favor of https://github.com/7Factor/terraform-aws-ecs-http-task which
+[exists on the Terraform Registry](https://registry.terraform.io/modules/7Factor/ecs-http-task/aws/latest). Please migrate
+to this version at your earliest convenience. Instructions for migration can be found in the new repository.
+
 # ECS HTTP Task
 
 This module will allow you to deploy an ECS Task and an ECS Service. This is intended to be run as part of your app deployment
